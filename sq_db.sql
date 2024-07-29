@@ -1,0 +1,37 @@
+
+CREATE TABLE IF NOT EXISTS users(
+id integer PRIMARY KEY AUTOINCREMENT,
+name text NOT NULL,
+email text NOT NULL,
+psw text NOT NULL,
+time integer NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS memory_game(
+id integer PRIMARY KEY AUTOINCREMENT,
+res_time INTEGER NOT NULL,
+res_moves INTEGER NOT NULL,
+user_id INTEGER,
+FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+CREATE TABLE IF NOT EXISTS game3(
+id integer PRIMARY KEY AUTOINCREMENT,
+res_score INTEGER NOT NULL,
+user_id INTEGER,
+FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+CREATE TABLE IF NOT EXISTS game1_level1(
+id integer PRIMARY KEY AUTOINCREMENT,
+res_score1 INTEGER NOT NULL,
+user_id INTEGER,
+FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+CREATE TABLE IF NOT EXISTS game1_level2(
+id integer PRIMARY KEY AUTOINCREMENT,
+res_score2 INTEGER NOT NULL,
+user_id INTEGER,
+FOREIGN KEY (user_id) REFERENCES users (id)
+);

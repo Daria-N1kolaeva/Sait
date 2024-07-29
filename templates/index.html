@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Login Page </title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form action="/register" method="post" >
+                <h1>Создайте свой аккаунт</h1>
+                <span></span>
+                <input type="text" name="name" placeholder="Имя">
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="psw" placeholder="Пароль">
+                <button id="register1" data-success-message="Вы успешно зарегистрированы!" >Зарегистрироваться</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form action="/login" method="post">
+                <h1>Войдите в свой аккаунт</h1>
+                <span></span>
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="psw" placeholder="Пароль">
+                <a href="#">Забыли свой Пароль?</a>
+                <button>Войти</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Добро пожаловать назад!</h1>
+                    <p>Введите свои личные данные, чтобы использовать все возможности сайта</p>
+                    <button class="hidden" id="login">Войти</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Здравствуйте!</h1>
+                    <p>Зарегистрируйтесь, указав свои личные данные, чтобы использовать все функции сайта.</p>
+                    <button class="hidden" id="register">Зарегистрироваться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

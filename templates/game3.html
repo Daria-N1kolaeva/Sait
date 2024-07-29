@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='game3.css') }}">
+    <title>Игра: Мама и малыш</title>
+</head>
+  <body>
+    <div class="app">
+      <h1>Найди маме своего малыша</h1>
+      <div class="quiz">
+        <h2 id="question"> </h2>
+        <div id="answer-buttons">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+        </div>
+        <button id="next-btn">Дальше</button>
+        <form action="/base_page">
+                    <a href="{{url_for('profile')}}">
+                        <button id="exit">Выйти из игры</button>
+                    </a>
+        </form>
+      </div>
+    </div>
+    <div class="help-icon">
+      <button id="help-button">?</button>
+      <div class="help-popup">
+        <h3>Правила игры:</h3>
+        <p>Игра "Мама и малыш" представляет собой задачу выбора правильного малыша животного среди трех вариантов ответа. Игроку показывается изображение мамы животного, и его задача - выбрать малыша, который является ее потомком из трех предложенных вариантов ответа. Цель игры - выбрать правильный ответ и набрать максимальное количество очков.</p>
+        <button id="close-button">Закрыть</button>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='game3.js') }}"></script>
+
+  </body>
+</html>

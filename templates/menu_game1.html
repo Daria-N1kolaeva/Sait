@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu_game1.css') }}">
+    <title>Игра: Подсчитай предметы</title>
+</head>
+  <body>
+    <div class="container">
+        <div class="help-icon">
+            <button id="help-button">?</button>
+            <div class="help-popup">
+                <h3>Правила игры:</h3>
+                <p>Игра "Подсчитай предметы" представляет собой задачу подсчета количества яблок на картинке. Игроку предлагается выбрать один из трех предложенных ответов, указывающих на разное количество яблок. Цель игры - выбрать правильный ответ и набрать максимальное количество очков.</p>
+                <button id="close-button">Закрыть</button>
+            </div>
+        </div>
+        <div class="app">
+            <h2>Игра "Подсчитай предметы"</h2>
+            <h1>Выбери какой уровень ты хочешь пройти!</h1>
+            <form action="/game1_level1">
+              <button class="btn">Уровень 1</button>
+            </form>
+            <form action="/game1_level2">
+              <button class="btn">Уровень 2</button>
+            </form>
+        </div>
+
+    </div>
+
+  </body>
+</html>

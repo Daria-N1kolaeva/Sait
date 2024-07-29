@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_page.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Base Page</title>
+</head>
+<body>
+    <div class="top-right-button">
+        <i class="bx bxs-star"></i>
+    </div>
+    <div class="sidebar" >
+        <div class="top">
+            <div class="logo">
+                <box-icon name='child'></box-icon>
+                <span>Развивайка</span>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <div class="user">
+            <img src="static/image/user.png" alt="me" class="user-img">
+            <div>
+                <p class="bold">{{ username }}</p>
+                <p>Пользователь</p>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="#" id="resultsBtn">
+                    <i class="bx bx-list-check"></i>
+                    <span class="nav-item">Результаты</span>
+                </a>
+                <span class="tooltip">Результаты</span>
+            </li>
+            <li>
+                <a href="#" id="helpBtn">
+                    <i class='bx bx-question-mark'></i>
+                    <span class="nav-item">Помощь</span>
+                </a>
+                <span class="tooltip">Помощь</span>
+            </li>
+            <li>
+                <a href="{{url_for('logout')}}">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Выйти</span>
+                </a>
+                <span class="tooltip">Выйти</span>
+            </li>
+        </ul>
+
+    </div>
+        <div class="overlay" id="overlay">
+            <div class="help-window">
+                <h3>Помощь</h3>
+                <p>Вам предлагается на выбор три игры:</p>
+                <p>“Подсчитай предметы”, где нужно угадать количество предметов на изображении;</p>
+                <p> “Найди пару” - игра на соединение карточек с аналогичными изображениями;</p>
+                <p> “Мама и малыш” - игра, в которой вы узнаете, какие малыши рождаются у различных животных.</p>
+                <p>Просто нажмите на одну из иконок, и начните играть!</p>
+                <button id="closeBtn">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+        </div>
+        <div class="overlay" id="resultsOverlay">
+            <div class="results-window">
+                <button id="resultsCloseBtn" class="bx bx-x"></button>
+                <h3>Твои результаты по пройденным играм</h3>
+                <p><b>Подсчитай предметы:</b></p>
+                {% if last_game1_level1_results %}
+                <p>Уровень 1 :{{ last_game1_level1_results.score}}/5 вопросов</p>
+                {% endif %}
+                {% if last_game1_level2_results %}
+                <p>Уровень 2 :{{ last_game1_level2_results.score}}/5 вопросов</p>
+                {% endif %}
+                {% if last_game_results %}
+                <p><b>Найди пару:</b> {{ last_game_results.time }} минут {{ last_game_results.moves }} шагов</p>
+                {% endif %}
+                {% if last_game3_results %}
+                <p><b>Мама и малыш:</b> {{ last_game3_results.score}}/5 вопросов</p>
+                {% endif %}
+            </div>
+        </div>
+    <div class="container" id="container">
+        <div class="name_block"><h1>Выбери игру</h1></div>
+        <div class="game">
+            <form action="/menu_game1">
+            <div class="menu_game1">
+                <button type="submit"></button>
+            </div>
+            </form>
+            <form action="/game2">
+            <div class="game2">
+                <button type="submit">  </button>
+            </div>
+            </form>
+            <form action="/game3">
+            <div class="game3">
+                <button type="submit"></button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    
+        
+    </div>
+</body>
+
+<script>
+    let btn = document.querySelector('#btn');
+    let sidebar = document.querySelector('.sidebar');
+
+    btn.onclick = function(){
+        sidebar.classList.toggle('active')
+    };
+
+    let helpBtn = document.getElementById('helpBtn');
+    let closeBtn = document.getElementById('closeBtn');
+    let overlay = document.getElementById('overlay');
+
+    helpBtn.onclick = function() {
+        overlay.style.display = 'flex';
+    }
+
+    closeBtn.onclick = function() {
+        overlay.style.display = 'none';
+    }
+
+    let resultsBtn = document.getElementById('resultsBtn');
+    let resultsCloseBtn = document.getElementById('resultsCloseBtn');
+    let resultsOverlay = document.getElementById('resultsOverlay');
+    let starBtn = document.querySelector('.top-right-button');
+
+    starBtn.onclick = function() {
+        resultsOverlay.style.display = 'flex';
+        sidebar.classList.remove('active');
+    }
+
+    resultsBtn.onclick = function() {
+        resultsOverlay.style.display = 'flex';
+    }
+
+    resultsCloseBtn.onclick = function() {
+        resultsOverlay.style.display = 'none';
+    }
+</script>
+
+</html>

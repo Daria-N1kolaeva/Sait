@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Caveat', cursive;
+}
+
+
+
+
+
+body{
+    background-image: url('/static/image/back.gif');
+    background-position: -120px 256px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #5e7bd7;
+}
+
+.container{
+    background-color: #e1f3ff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    flex-direction: column;
+  
+}
+
+.name_block {
+    text-align: center;
+    padding: 5px;
+    margin: 15px;
+    letter-spacing: 5px;
+    font-size: 25px;
+    
+  }
+  
+  .game1,
+  .game2,
+  .game3 {
+    display: inline-block;
+    justify-content: center;
+    margin: 2px;
+    cursor: pointer;
+  }
+  
+  .game {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    
+}
+
+
+
+  button {
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    background: none;
+    width: 240px;
+    height: 335px;
+    cursor: pointer;
+  }
+
+ 
+  
+  .menu_game1 {
+    background-image: url('/static/image/card1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: transform 0.3s;
+}
+
+.menu_game1:hover{
+    transform: scale(1.1);
+}
+
+.game2 {
+    background-image: url('/static/image/card2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: transform 0.3s;
+    
+}
+
+.game2:hover{
+    transform: scale(1.1);
+}
+
+
+.game3 {
+    background-image: url('/static/image/card3.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: transform 0.3s;
+}
+
+.game3:hover{
+    transform: scale(1.1);
+}
+
+
+.user-img{
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid #5e7bd7;
+}
+
+.sidebar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: #e1f3ff;
+    padding: .4rem .8rem;
+    transition: all 0.5s ease;
+}
+
+.sidebar.active{
+    width: 250px;
+}
+
+.sidebar #btn {
+    position: absolute;
+    color: #5e7bd7;
+    top: .4rem;
+    left: 50%;
+    font-size: 1.5rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.sidebar.active #btn {
+    left: 90%;
+}
+
+.sidebar .top .logo{
+    color: #5e7bd7;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.sidebar.active .top .logo {
+    opacity: 1;
+}
+
+.top .logo i {
+    font-size: 4rem;
+    margin-right: 5px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.user p{
+    color: #5e7bd7;
+    opacity: 1;
+    margin-left: 1rem ;
+    font-size: 25px;
+
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.sidebar p{
+    opacity: 0;
+}
+
+.sidebar.active p {
+    opacity: 1;
+}
+
+.sidebar ul li {
+    position: relative;
+    list-style-type: none;
+    height: 50px;
+    width: 90%;
+    margin: 0.8rem auto;
+    line-height: 50px;
+}
+
+.sidebar ul li a {
+    color: #5e7bd7;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem ;
+}
+
+.sidebar ul li a:hover{
+    background-color: #5e7bd7;
+    color: #e1f3ff;
+}
+
+.sidebar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    font-size: 30px;
+}
+
+.sidebar .nav-item {
+    opacity: 0;
+}
+
+.sidebar.active .nav-item{
+    opacity: 1;
+}
+
+.sidebar ul li .tooltip{
+    position: absolute;
+    left: 125px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+    border-radius: .6rem;
+    padding: .4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    opacity: 0;
+}
+
+.sidebar ul li:hover .tooltip{
+    opacity: 1;
+
+}
+
+.sidebar.active ul li .tooltip{
+    display: none;
+}
+
+.sidebar span{
+    font-size: 30px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    color: #5e7bd7;
+}
+
+.help-window {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    color: #5e7bd7;
+    position: relative;
+}
+
+.help-window p {
+    margin-bottom: 20px;
+    color: #5e7bd7;
+    font-size: 25px;
+    text-align:justify;
+}
+
+.help-window h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+
+
+#closeBtn {
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: -10px; /* Изменяем значение top */
+    right: -100px; /* Изменяем значение right для сдвига кнопки */
+    transform: translateX(100%); /* Сдвигаем кнопку на 100% от ее ширины */
+    transform: translateY(-40%);
+    cursor: pointer;
+}
+
+#closeBtn i {
+    color: #5e7bd7;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+#closeBtn i:hover {
+    color: #2a4da6;
+}
+
+.results-window {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    text-align: justify;
+    color: #5e7bd7;
+    position: relative;
+    z-index:1001;
+}
+
+.results-window p {
+    margin-bottom: 20px;
+    color: #5e7bd7;
+    font-size: 25px;
+}
+
+.results-window h3 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+#resultsCloseBtn {
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: -10px; /* Изменяем значение top */
+    right: -100px; /* Изменяем значение right для сдвига кнопки */
+    transform: translateX(100%); /* Сдвигаем кнопку на 100% от ее ширины */
+    transform: translateY(-40%);
+    cursor: pointer;
+    
+}
+
+#resultsCloseBtn i {
+    color: #5e7bd7;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+#resultsCloseBtn i:hover {
+    color: #2a4da6;
+}
+
+.top-right-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #5e7bd7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.top-right-button:hover {
+    transform: scale(1.1);
+}
+
+.top-right-button i {
+  color: #ffcf73;
+  font-size: 45px;
+}

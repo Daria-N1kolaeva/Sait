@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Игра Найди пару</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='game2.css') }}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <form>
+      <div class="stats-container">
+        <div id="moves-count"></div>
+        <div id="time"></div>
+      </div>
+      </form>
+      <div class="game-container"></div>
+      <button id="stop" class="hide">Закончить игру</button>
+    </div>
+    <div class="controls-container">
+
+      <div class="container">
+      <p id="result"></p>
+      <button id="start">Начать игру</button>
+      <form action="/base_page">
+        <a href="{{url_for('profile')}}">
+      <button id="exit" class="hide" >Выйти из игры</button>
+        </a>
+      </form>
+      </div>
+    </div>
+    <div class="help-icon">
+      <button id="help-button">?</button>
+      <div class="help-popup">
+        <h3>Правила игры:</h3>
+        <p>Игра "Найди пару" изначально представляет собой набор карточек, перевернутых рубашкой вверх, размещенных на игровом поле. Игроки должны последовательно открывать две карточки за ход, с целью найти пару одинаковых карточек. Если открытые карточки совпадают, они остаются открытыми. Если они не совпадают, они закрываются обратно. Игра продолжается до тех пор, пока все пары не будут найдены. Цель игры - найти все пары за наименьшее количество времи.</p>
+        <button id="close-button">Закрыть</button>
+      </div>
+    </div>
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='game2.js') }}"></script>
+  </body>
+</html>

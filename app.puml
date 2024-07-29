@@ -1,0 +1,65 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MainApp {
+    - DATABASE: string
+    - DEBUG: boolean
+    - SECRET_KEY: string
+    - app: Flask
+    - login_manager: LoginManager
+
+    + connect_db(): sqlite3.Connection
+    + create_db(): void
+    + get_db(): sqlite3.Connection
+    + before_request(): void
+    + login(): route
+    + register(): route
+    + save_game_data(): route
+    + save_game1_level1_data(): route
+    + save_game1_level2_data(): route
+    + save_game3_data(): route
+    + profile(): route
+    + menu_game1(): route
+    + index(): route
+    + logout(): route
+    + game1(): route
+    + level2(): route
+    + game2(): route
+    + game3(): route
+    + close_db(error): void
+}
+
+class FDataBase {
+    - db: sqlite3.Connection
+    - __cur: sqlite3.Cursor
+    + __init__(db: sqlite3.Connection): void
+    + addUser(name: str, email: str, hpsw: str): bool
+    + addres(res_time: int, res_moves: int, user_id: int): void
+    + game1_level1(res_score1: int, user_id: int): void
+    + game1_level2(res_score2: int, user_id: int): void
+    + game3(res_score: int, user_id: int): void
+    + get_last_game3_results(user_id: int): dict
+    + get_last_game1_level1_results(user_id: int): dict
+    + get_last_game1_level2_results(user_id: int): dict
+    + get_last_game_results(user_id: int): dict
+    + getUser(user_id: int): dict
+    + getUserByEmail(email: str): dict
+}
+
+class UserLogin {
+    - __user: dict
+
+    + fromDB(user_id: int, db: FDataBase): UserLogin
+    + create(user: dict): UserLogin
+    + is_authenticated(): bool
+    + is_active(): bool
+    + is_anonymous(): bool
+    + get_id(): str
+    + get_username(): str
+}
+
+MainApp o-- FDataBase
+MainApp o-- UserLogin
+UserLogin o-- FDataBase
+
+@enduml
